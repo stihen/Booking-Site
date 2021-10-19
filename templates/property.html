@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %} | Property #{{ property.property_id }} {% endblock %}
+{% block content %}
+{# TODO: Show property page #}
+
+<main>
+    <div class="framed">
+        <div class="prop_left">
+            <img src="{{ url_for("static", filename="images/" + property.property_photo) }}" alt="Property {{property.property_id}}" width="200px" />
+            <div class="place">{{property.property_location}}</div>
+        </div>
+        <div class="prop_right">
+            <h3>{{property.property_name}}</h3>
+            <p>{{property.property_description}}</p>
+        </div>
+        <div class="prop_booking">
+            <form action="{{ url_for("book") }}" method="POST">
+                <input type="hidden" name="property_id" value="{{ property.property_id }}" />
+                <label>Check-in: <input type="date" name="checkin" size="10" required></label>
+                <label>Check-Out: <input type="date" name="checkout" size="10" required></label>
+                <input type="submit" value="Book property">
+            </form>
+        </div>
+    </div>
+    <h1>Details</h1>
+    <div class="framed">
+        {{property.property_details}}
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "booking.html" %}
+{% block booking %}
+<div>
+    Property: {{session["property_id"]}} </br>
+    Checkin: {{session["checkin"]}} </br>
+    Checkout: {{session["checkout"]}} </br>
+</div>
+
+<h3>Personal details</h3>
+
+<form action="{{ url_for("book") }}" method="POST">
+    <div class="personalDetails">
+        <table>
+            <tbody>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" name="fornavn" value="{{session['fornavn']}}" required/></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="etternavn" value="{{session['etternavn']}}" required /></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" name="email" value="{{session['email']}}" required /></td>
+                </tr>
+                <tr>
+                    <td>Telephone:</td>
+                    <td><input type="tel" name="telephone" value="{{session['telephone']}}" required /></td>
+                </tr>
+                <tr>
+                    <td>Postcode:</td>
+                    <td><input type="text" name="postcode" value="{{session['postcode']}}" required /></td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td><input type="text" name="city" value="{{session['city']}}" required /></td>
+                </tr>
+                <tr>
+                    <td>Street:</td>
+                    <td><input type="text" name="street" value="{{session['street']}}" required /></td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td><input type="text" name="country" value="{{session['country']}}" required /></td>
+                </tr>
+                <tr>
+                    <td>Comment (Optional):</td>
+                    <td><input type="text" name="comment" value="{{session['comment']}}" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <br>
+                        <input type="hidden" name="action" value="do_1" />
+                        <input type="submit" value="Book property" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</form>
+{% endblock %}

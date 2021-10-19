@@ -1,0 +1,77 @@
+{% extends "booking.html" %}
+{% block booking %}
+<h3>Confirmation</h3>
+<form action="{{ url_for("book") }}" method="POST">
+
+    <div class="personalDetails">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Property no:</td>
+                    <td><input type="text" name="property_id" value="{{session['property_id']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Checkin:</td>
+                    <td><input type="text" name="checkin" value="{{session['checkin']}}" readonly /></td>
+                </tr>
+                <tr>
+                    <td>Checkout:</td>
+                    <td><input type="text" name="checkout" value="{{session['checkout']}}" readonly /></td>
+                </tr>
+
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" name="fornavn" value="{{session['fornavn']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="etternavn" value="{{session['etternavn']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" name="email" value="{{session['email']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Telephone:</td>
+                    <td><input type="tel" name="telephone" value="{{session['telephone']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Postcode:</td>
+                    <td><input type="text" name="postcode" value="{{session['postcode']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td><input type="text" name="city" value="{{session['city']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Street:</td>
+                    <td><input type="text" name="street" value="{{session['street']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td><input type="text" name="country" value="{{session['country']}}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>Comment (Optional):</td>
+                    <td><input type="text" name="comment" value="{{session['comment']}}" readonly/></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="hidden" name="action" value="do_2" />
+                        <input type="checkbox" name="confirm" value="1">
+                            <a href="{{ url_for("terms") }}" target="_blank">I confirm this booking and agree to the terms & conditions</a><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Confirm booking"/>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</form>
+{% endblock %}

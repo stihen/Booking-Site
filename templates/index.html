@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <main>
+        <img src="static/images/background.jpg" alt="Skiing destinations" class="banner" />
+        <h1>Properties</h1>
+        {% for props in property %}
+        <article class="framed column">
+            <div class="prop_left">
+                <img src="static/images/{{props.property_photo}}" alt="Property {{props.property_id}}" width="200px" />
+                <div class="place">{{props.property_location}}</div>
+            </div>
+            <div class="prop_right">
+                <h3>{{props.property_name}}</h3>
+                <p>{{props.property_description}}</p>
+            </div>
+                <div class="details">
+                    <a href="{{ url_for("property", property_id=props.property_id) }}">Details</a>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </main>
+    
+{% endblock %}
